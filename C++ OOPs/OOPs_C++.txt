@@ -1,0 +1,147 @@
+
+--------
+C++ OOPS
+--------
+
+#include<bits/stdc++.h>
+using namespace std;
+
+class Person
+{
+	public: 
+	
+	int age;
+	string name;
+
+	static int count2;
+	 
+    Person()    
+    {    
+        cout<<"Default Constructor Invoked"<<endl;   
+		count2++; 
+    } 
+};
+int Person::count2 = 0;
+int main()
+{ 	
+	Person p1;
+	Person *p2 = new Person();
+	
+	cout<<p2->count2<<"\n";
+	return 0;
+}
+
+-------------
+Static in C++
+-------------
+
+static variable : When a variable is declared as static, space for it gets allocated for the lifetime
+of the program.
+
+A static variable inside a class should be initialized explicitly by the user using the class name and 
+scope resolution operator outside the class as shown.
+
+Class objects as static - Just like variables, objects also when declared as static have scope till the 
+lifetime of program.
+
+Just like the static data members or static variables inside the class, static member functions also does 
+not depend on object of class. 
+
+static member function are allowed to invoke using the object and the ‘.’ operator but it is recommended 
+to invoke the static members using the class name and the scope resolution operator.
+
+Static member functions are allowed to access only the static data members or other static member functions, 
+they can not access the non-static data members or member functions of the class.
+
+
+---------------
+Friend Function
+---------------
+
+If a function is defined as a friend function in C++, then the protected and private data of a class can 
+be accessed using the function.
+
+• The function is not in the scope of the class to which it has been declared as a friend.
+• It cannot be called using the object as it is not in the scope of that class.
+• It can be invoked like a normal function without using the object.
+• It cannot access the member names directly and has to use an object name and dot membership operator with 
+  the member name.
+• It can be declared either in the private or the public part.
+
+-----------
+Inheritance
+-----------
+
+• When the base class is privately inherited by the derived class, public members of the base class becomes 
+  the private members of the derived class. Therefore, the public members of the base class are not accessible 
+  by the objects of the derived class only by the member functions of the derived class.
+
+• When the base class is publicly inherited by the derived class, public members of the base class also become 
+  the public members of the derived class. Therefore, the public members of the base class are accessible by the 
+  objects of the derived class as well as by the member functions of the base class.
+  
+• In C++, the default mode of visibility is private. The private members of the base class are never inherited.
+
+#include <iostream>  
+using namespace std;  
+
+class A  
+{  
+    int a = 4;  
+    int b = 5;  
+    public:  
+    int mul()  
+    {  
+        int c = a*b;  
+        return c;  
+    }     
+};  
+  
+class B : private A  
+{  
+    public:  
+    void display()  
+    {  
+        int result = mul();  
+        std::cout <<"Multiplication of a and b is : "<<result<< std::endl;  
+    }  
+};  
+int main()  
+{  
+   B b;  
+   b.display();  
+  
+    return 0;  
+}  
+
+Output: Multiplication of a and b is : 20
+
+Reason : In the above example, class A is privately inherited. Therefore, the mul() function of class 'A' cannot be 
+		 accessed by the object of class B. It can only be accessed by the member function of class B.
+		 
+
+Protected Visibility
+--------------------
+
+The private member is not inheritable. If we modify the visibility mode by making it public, but this takes away the 
+advantage of data hiding.
+
+C++ introduces a third visibility modifier, i.e protected. The member which is declared as protected will be access-
+ible to all the member functions within the class as well as the class immediately derived from it.
+
+
+--------------------
+Multiple Inheritance
+--------------------
+
+//syntax
+class D : visibility B-1, visibility B-2,  
+{  
+    // Body of the class;
+}
+
+
+
+
+
+

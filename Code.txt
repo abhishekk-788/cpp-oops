@@ -1,0 +1,90 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#define ll int
+#define ull unsigned long long
+#define ld long double
+
+#define F first
+#define S second
+#define PB push_back
+#define MP make_pair
+#define mod 1000000007
+
+typedef vector<ll> vi;
+typedef pair<ll, ll> pi;
+
+struct building
+{
+    ll x, y, l, c;
+};
+
+struct antenna
+{
+    ll r, c;
+};
+
+building B[350005];
+antenna A[60005];
+
+void solve()
+{
+    ll w, h;
+    cin >> w >> h;
+
+    ll n, m, r;
+    cin >> n >> m >> r;
+
+    for(int i = 0; i < n; i++)
+    {
+        ll x, y, l, c;
+        cin >> x >> y >> l >> c;
+
+        B[i].x = x;
+        B[i].y = y;
+        B[i].l = l;
+        B[i].c = c;
+    }
+
+    for(int i = 0; i < m; i++)
+    {
+        ll r, c;
+        cin >> r >> c;
+
+        A[i].r = r;
+        A[i].c = c;
+    }
+
+    cout << m << "\n";
+    for(int i = 0; i < m; i++)
+    {
+        cout << i << " ";
+        if(B[i].x > 0)
+        {
+            cout << (B[i].x - 1) << " " << B[i].y << "\n";
+        }
+        else
+        {
+            cout << (B[i].x + 1) << " " << B[i].y << "\n";
+        }
+    }
+}
+
+
+int32_t main()
+{
+    
+    #ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+    #endif
+
+    ios::sync_with_stdio(0), cin.tie(0);
+
+    ll t = 1;
+
+    while(t--) {
+        solve();
+    }
+    return 0;
+}
